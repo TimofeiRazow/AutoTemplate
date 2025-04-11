@@ -1,0 +1,167 @@
+[
+    {
+    
+        "tokens": [
+            "ПОСТАНОВЛЕНИЕ", "о", "возбуждении", "исполнительного", "производства",
+            "12.03.2022", "г.", "Алматы", "Алматинская", "область", "Частный", "судебный",
+            "исполнитель", "исполнительного", "округа", "Алматинского", "округа",
+            "Алматинская", "область", ",", "г.", "Алматы", ",", "ул.", "Мусрепов", "8", ",",
+            "Иванов", "Иван", "Иванович", "рассмотрев", "Ст.", "9", "п.", "11-1.", "исполнительная", 
+            "надпись", "2345785777098", "от", "12.03.2022", "года", "о", "взыскании", 
+            "150000", "тенге", "(", "взыскатель", "ТОО", "Каз", "Трейд", "432567453","БИН", ",", 
+            "должник", "Разов", "Тимофей", "Дмитриевич", "345698676890","ИИН", ")", "поступившего",
+            "03.04.2022", "года", "из", "Суд", "города", "Алматы"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "O", "O",
+            "B-DISTRICT", "I-DISTRICT", "B-AREA", "I-AREA", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-FULLNAME", "I-FULLNAME", "I-FULLNAME", "O", "B-DOCUMENT_NAME", "I-DOCUMENT_NAME", "I-DOCUMENT_NAME", "I-DOCUMENT_NAME", "I-DOCUMENT_NAME",
+            "I-DOCUMENT_NAME", "DOCUMENT_NUMBER", "O", "DATE", "O", "B-REQUIREMENT", "I-REQUIREMENT",
+            "I-REQUIREMENT", "I-REQUIREMENT", "O", "B-CLAIMANT_NAME", "I-CLAIMANT_NAME", "I-CLAIMANT_NAME", "I-CLAIMANT_NAME", "B-CLAIMANT_ID", "I-CLAIMANT_ID","O",
+            "B-DEBTOR_NAME", "I-DEBTOR_NAME", "I-DEBTOR_NAME", "I-DEBTOR_NAME", "B-DEBTOR_ID", "I-DEBTOR_ID", "O", "O",
+            "DATE", "O", "B-ISSUING_AUTHORITY", "I-ISSUING_AUTHORITY", "I-ISSUING_AUTHORITY", "I-ISSUING_AUTHORITY"
+        ]
+    }, 
+    {
+        "tokens": ["Иванов", "Иван", "Иванович"],
+        "ner_tags": ["B-FULLNAME", "I-FULLNAME", "I-FULLNAME"]
+    },
+    {
+        "tokens": ["12.03.2022", "г.", "Алматы"],
+        "ner_tags": ["B-DATE", "B-CITY", "I-CITY"]
+    }, 
+    {
+        "tokens": [
+            "РЕШЕНИЕ", "о", "наложении", "административного", "штрафа",
+            "15.05.2023", "г.", "Нур-Султан", "Акмолинская", "область", "Судья",
+            "районного", "суда", "№4", "Акмолинской", "области", ",", "г.", "Нур-Султан", ",", 
+            "ул.", "Абая", "24", ",", "Сидоров", "Петр", "Сергеевич", "на", "основании", "Ст.", 
+            "12", "п.", "3.", "протокол", "№345678", "от", "15.05.2023", "года", "назначил", 
+            "штраф", "50000", "тенге", "(", "ответчик", "ООО", "ТрансЛогистик", "123456789", "БИН", 
+            ",", "нарушитель", "Иванов", "Сергей", "Викторович", "987654321098", "ИИН", ")", "поданный",
+            "01.06.2023", "года", "в", "Суд", "города", "Нур-Султан"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "O", "B-DISTRICT", "I-DISTRICT", "B-AREA", "I-AREA", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-FULLNAME", "I-FULLNAME", "I-FULLNAME", "O", "O", "B-DOCUMENT_NAME", "I-DOCUMENT_NAME", "I-DOCUMENT_NAME", "I-DOCUMENT_NAME", "I-DOCUMENT_NAME",
+            "DOCUMENT_NUMBER", "O", "DATE", "O", "B-REQUIREMENT", "I-REQUIREMENT", "I-REQUIREMENT", "I-REQUIREMENT", "O", "B-CLAIMANT_NAME", "I-CLAIMANT_NAME", 
+            "I-CLAIMANT_NAME", "B-CLAIMANT_ID", "I-CLAIMANT_ID", "O", "B-DEBTOR_NAME", "I-DEBTOR_NAME", "I-DEBTOR_NAME", "I-DEBTOR_NAME", "B-DEBTOR_ID", 
+            "I-DEBTOR_ID", "O", "O", "DATE", "O", "B-ISSUING_AUTHORITY", "I-ISSUING_AUTHORITY", "I-ISSUING_AUTHORITY"
+        ]
+    },
+    {
+        "tokens": [
+            "ЗАЯВЛЕНИЕ", "о", "выдаче", "дубликата", "документа",
+            "22.08.2024", "г.", "Шымкент", "Южно-Казахстанская", "область", "Регистрационный",
+            "отдел", "№3", "г.", "Шымкент", ",", "ул.", "Достык", "15", ",", "Петрова", 
+            "Елена", "Александровна", "подала", "запрос", "на", "дубликат", "документа", 
+            "с", "номером", "4567832091", "выданного", "22.01.2020", "года", "органом",
+            "ЗАГС", "Шымкент", "Южно-Казахстанская", "область"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-FULLNAME", "I-FULLNAME", "I-FULLNAME", "O", "O", "O", "B-DOCUMENT_NAME", "O", 
+            "O", "DOCUMENT_NUMBER", "DATE", "O", "B-ISSUING_AUTHORITY", "I-ISSUING_AUTHORITY", 
+            "I-ISSUING_AUTHORITY", "B-CITY", "I-CITY", "B-AREA", "I-AREA"
+        ]
+    }, 
+    {
+        "tokens": [
+            "СПРАВКА", "о", "доходах", "физического", "лица",
+            "10.02.2023", "г.", "Костанай", "Костанайская", "область", "Инспекция",
+            "налоговая", "№2", "г.", "Костанай", ",", "ул.", "Ленина", "34", ",", 
+            "Смирнов", "Алексей", "Петрович", "получил", "документ", "№567234", 
+            "на основании", "запроса", "от", "15.01.2023", "года"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA", 
+            "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-FULLNAME", "I-FULLNAME", "I-FULLNAME", "O", "B-DOCUMENT_NAME", "DOCUMENT_NUMBER", 
+            "O", "O", "O", "DATE", "O"
+        ]
+    },
+    {
+        "tokens": [
+            "УДОСТОВЕРЕНИЕ", "о", "регистрации", "юридического", "лица",
+            "25.06.2021", "г.", "Караганда", "Карагандинская", "область", "Центр", 
+            "регистрации", "№5", ",", "г.", "Караганда", ",", "ул.", "Гагарина", "12", ",",
+            "ТОО", "Альянс", "Бизнес", "345672390001", "БИН"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-CLAIMANT_NAME", "I-CLAIMANT_NAME", "I-CLAIMANT_NAME", "B-CLAIMANT_ID", "I-CLAIMANT_ID"
+        ]
+    },
+    {
+        "tokens": [
+            "УДОСТОВЕРЕНИЕ", "о", "регистрации", "юридического", "лица",
+            "25.06.2021", "г.", "Караганда", "Карагандинская", "область", "Центр", 
+            "регистрации", "№5", ",", "г.", "Караганда", ",", "ул.", "Гагарина", "12", ",",
+            "ТОО", "Альянс", "Бизнес", "345672390001", "БИН"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-CLAIMANT_NAME", "I-CLAIMANT_NAME", "I-CLAIMANT_NAME", "B-CLAIMANT_ID", "I-CLAIMANT_ID"
+        ]
+    },
+    {
+        "tokens": [
+            "АКТ", "о", "проверке", "налогоплательщика",
+            "18.11.2022", "г.", "Актобе", "Актюбинская", "область", "Департамент", 
+            "государственных", "доходов", "г.", "Актобе", ",", "ул.", "Сейфуллина", "5", ",", 
+            "ИП", "Рогова", "Ольга", "Викторовна", "123456789012"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-DEBTOR_NAME", "I-DEBTOR_NAME", "I-DEBTOR_NAME", "B-DEBTOR_ID", "I-DEBTOR_ID"
+        ]
+    },
+    {
+        "tokens": [
+            "ПРИКАЗ", "о", "назначении", "руководителя",
+            "02.09.2023", "г.", "Талдыкорган", "Алматинская", "область", "Комитет",
+            "по", "делам", "государственной", "службы", ",", "г.", "Талдыкорган", ",", 
+            "ул.", "Байсеитова", "19", ",", "Ким", "Виктор", "Иванович"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-FULLNAME", "I-FULLNAME", "I-FULLNAME"
+        ]
+    },
+    {
+        "tokens": [
+            "СВИДЕТЕЛЬСТВО", "о", "праве", "наследования",
+            "30.03.2024", "г.", "Усть-Каменогорск", "Восточно-Казахстанская", "область", "Нотариус", 
+            "№7", ",", "г.", "Усть-Каменогорск", ",", "ул.", "Курчатова", "8", ",", 
+            "Сидоров", "Григорий", "Андреевич"
+        ],
+        "ner_tags": [
+            "B-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE", "I-TEMPLATE",
+            "DATE", "B-CITY", "I-CITY", "B-AREA", "I-AREA",
+            "O", "O", "O", "B-CITY", "I-CITY", "O", "B-STREET", "I-STREET", "I-STREET", "O",
+            "B-FULLNAME", "I-FULLNAME", "I-FULLNAME"
+        ]
+    }
+    
+    
+    
+    
+    
+        
+    
+]

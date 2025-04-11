@@ -1,0 +1,11 @@
+prompt/
+fine_tuned_sbert/
+__pycache__/
+dream/
+embeddings.npy
+faiss.index
+law_fragments.txt
+law_text.txt
+venv/
+newenv/
+

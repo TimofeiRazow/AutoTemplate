@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Document Templates</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='admin.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Admin Panel</h1>
+            <nav class="admin-nav">
+                <button class="nav-btn active" data-section="templates">Templates</button>
+                <button class="nav-btn" data-section="ai-suggestions">AI Suggestions</button>
+                <button class="nav-btn" data-section="statistics">Statistics</button>
+            </nav>
+        </header>
+
+        <main class="admin-main">
+            <!-- Templates Section -->
+            <section id="templates-section" class="admin-section active">
+                <div class="section-header">
+                    <h2>Document Templates</h2>
+                    <button class="add-template-btn">Add New Template</button>
+                </div>
+
+                <div class="templates-grid">
+                    <!-- Template cards will be dynamically added here -->
+                </div>
+
+                <!-- Template Editor Modal -->
+                <div class="modal" id="template-editor">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Template Editor</h3>
+                            <button class="close-btn">&times;</button>
+                        </div>
+                        <div class="editor-container">
+                            <div class="editor-tabs">
+                                <button class="tab-btn active" data-tab="schema">Schema</button>
+                                <button class="tab-btn" data-tab="preview">Preview</button>
+                            </div>
+                            <div class="editor-content">
+                                <div class="tab-content active" id="schema-tab">
+                                    <div class="json-editor" id="json-editor"></div>
+                                </div>
+                                <div class="tab-content" id="preview-tab">
+                                    <div class="template-preview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="save-btn">Save Template</button>
+                            <button class="publish-btn">Publish</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Suggestions Section -->
+            <section id="ai-suggestions-section" class="admin-section">
+                <div class="section-header">
+                    <h2>AI Suggestions</h2>
+                    <div class="ai-controls">
+                        <button class="train-model-btn">Train Model</button>
+                        <button class="export-data-btn">Export Training Data</button>
+                    </div>
+                </div>
+
+                <div class="suggestions-container">
+                    <div class="suggestions-stats">
+                        <div class="stat-card">
+                            <h3>Auto-completion Accuracy</h3>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="stat-value">85%</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3>OCR Confidence</h3>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="stat-value">92%</span>
+                        </div>
+                    </div>
+
+                    <div class="suggestions-settings">
+                        <h3>AI Settings</h3>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label>Auto-completion Threshold</label>
+                                <input type="range" min="0" max="100" value="80" class="threshold-slider">
+                                <span class="threshold-value">80%</span>
+                            </div>
+                            <div class="setting-item">
+                                <label>Learning Rate</label>
+                                <input type="range" min="0" max="100" value="50" class="learning-rate-slider">
+                                <span class="learning-rate-value">50%</span>
+                            </div>
+                            <div class="setting-item">
+                                <label>Context Window</label>
+                                <select class="context-window-select">
+                                    <option value="3">3 fields</option>
+                                    <option value="5" selected>5 fields</option>
+                                    <option value="7">7 fields</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="suggestions-history">
+                        <h3>Recent Corrections</h3>
+                        <div class="corrections-list">
+                            <!-- Corrections will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statistics-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Template Usage Statistics</h2>
+                    <div class="date-range">
+                        <input type="date" id="start-date">
+                        <span>to</span>
+                        <input type="date" id="end-date">
+                        <button class="apply-range-btn">Apply</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <h3>Most Used Templates</h3>
+                        <div class="chart-container">
+                            <!-- Bar chart will be rendered here -->
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Usage Over Time</h3>
+                        <div class="chart-container">
+                            <!-- Line chart will be rendered here -->
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Field Completion Rate</h3>
+                        <div class="chart-container">
+                            <!-- Pie chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detailed-stats">
+                    <h3>Detailed Statistics</h3>
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Template</th>
+                                <th>Usage Count</th>
+                                <th>Avg. Completion Time</th>
+                                <th>Error Rate</th>
+                                <th>User Satisfaction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Stats rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src-noconflict/ace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+</body>
+</html> 

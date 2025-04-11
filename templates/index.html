@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Долгострой</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Долгострой</h1>
+            </div>
+            <div class="header-buttons">
+                
+                <button class="settings-btn" id="settings-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#F3F3F3"><path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"/></svg></button>
+            </div>
+        </header>
+        <input type="file" id="document-upload" accept=".pdf,.jpg,.jpeg,.png,.docx" style="visibility: hidden">
+        
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Здесь будут сообщения -->
+            </div>
+            
+            <div class="chat-input-container">
+                <textarea class="chat-input" id="chat-input" placeholder="Напишите сообщение..." rows="1"></textarea>
+                <div class="bottom-buttons">
+                    <div class="group-btn">
+                        <button class="btn upload-doc icon" id="upload-doc-btn" title="Загрузить документ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#F3F3F3">
+                                <path d="M240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Zm240-200L280-600l56-56 104 104v-368h80v368l104-104 56 56-200 200Z"/>
+                            </svg>
+                        </button>
+                        <button class="btn upload-doc word" title="Анализ отправленного изображения или документа">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+                            <span class="bold">Анализ</span>
+                        </button>
+                    </div>
+                    <div class="group-btn">
+                        <button class="btn send icon" id="send-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="template-suggestions" id="template-suggestions"></div>
+
+        
+
+        <!-- Document Processing Section -->
+        <div class="document-section" id="document-section" style="display: none;">
+            
+            <button class="close-document-btn" id="close-document-btn">&times;</button>
+            <div class="document-content">
+
+                <div class="document-upload">
+                    <div class="upload-area" id="upload-area">
+                        
+                        <div class="upload-prompt">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p>Перетащите документ сюда или нажмите для выбора</p>
+                            <p class="upload-hint">Поддерживаемые форматы: PDF, DOCX, JPEG, PNG (до 20MB)</p>
+                        </div>
+                    </div>
+                    <div class="upload-progress" id="upload-progress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p class="progress-text">Обработка документа...</p>
+                    </div>
+                </div>
+
+                <!-- Data Entry Form -->
+                <div class="data-entry-form" id="data-entry-form" style="display: none;">
+                    <div class="form-header">
+                        <h3>Проверка данных</h3>
+                        <div class="confidence-indicator">
+                            <span class="confidence-label">Достоверность:</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-fields" id="form-fields"></div>
+                </div>
+
+                <!-- Chip System -->
+                <div class="chip-system" id="chip-system" style="display: none;">
+                    <div class="chip-categories">
+                        <button class="chip-category active" data-category="document">Тип документа</button>
+                        <button class="chip-category" data-category="grounds">Основания</button>
+                        <button class="chip-category" data-category="dates">Даты</button>
+                        <button class="chip-category" data-category="authorities">Органы</button>
+                        <button class="chip-category" data-category="custom">Свои</button>
+                    </div>
+                    <div class="chips-container" id="chips-container"></div>
+                </div>
+
+                <!-- Document Actions -->
+                <div class="document-actions" id="document-actions" style="display: none;">
+                    <button class="generate-btn" id="generate-btn">Создать документ</button>
+                    <button class="preview-btn" id="preview-btn">Предпросмотр</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="settings-section">
+                <h3>Данные для ИИ</h3>
+                <div class="setting-item">
+                    <label for="user-name">Полные фамилия, имя и отчество</label>
+                    <input type="text" id="user-name" placeholder="Введите своё ФИО, например Иванов Иван Иванович">
+                </div>
+                <div class="setting-item">
+                    <label for="user-email">Ваша почта для связи</label>
+                    <input type="email" id="user-email" placeholder="Введите свою почту">
+                </div>
+                <div class="setting-item">
+                    <label for="user-phone">Номер телефона</label>
+                    <input type="text" id="user-phone" placeholder="Введите свой номер телефона">
+                </div>
+                <div class="setting-item">
+                    <label for="district">Исполнительный округ</label>
+                    <input type="text" id="district" placeholder="Введите свой исполнительный округ">
+                </div>
+                <div class="setting-item">
+                    <label for="user-area">Область проживания</label>
+                    <input type="text" id="user-area" placeholder="Введите область, например Алматинская область">
+                </div>
+                <div class="setting-item">
+                    <label for="city">Город проживания</label>
+                    <input type="text" id="city" placeholder="Введите название города, например: г. Алматы">
+                </div>
+                <div class="setting-item">
+                    <label for="street">Улица и номер дома</label>
+                    <input type="text" id="street" placeholder="Введите свой адрес дома">
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Интерфейс</h3>
+                <div class="setting-item">
+                    <label for="theme-select">Theme</label>
+                    <select id="theme-select">
+                        <option value="light">Light Mode</option>
+                        <option value="dark">Dark Mode</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>Персональные настройки</h3>
+                <div class="setting-item">
+                    <label for="bot-name">Имя долгостроя</label>
+                    <input type="text" id="bot-name" placeholder="Введите имя боту, на своё усмотрение">
+                </div>
+                <div class="setting-item toggle-container">
+                    <span class="toggle-label">Разрешение собирать данные переписки</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="personal-data">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <button class="save-settings" id="save-settings">Сохранить настройки</button>
+            <div class="save-indicator" id="save-indicator">Сохранение успешно завершилось!</div>
+        </div>
+    </div>
+
+    <!-- Document Preview Modal -->
+    <div class="modal" id="preview-modal">
+        <div class="modal-content preview-content">
+            <div class="modal-header">
+                <h2>Предпросмотр документа</h2>
+                <button class="close-btn" id="close-preview">&times;</button>
+            </div>
+            <div class="preview-container" id="preview-container"></div>
+            <div class="preview-actions">
+                <button class="download-btn" id="download-btn">Скачать</button>
+                <button class="close-btn" id="close-preview-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Drag Overlay -->
+    <div id="drag-overlay" class="drag-overlay">
+        <div class="drag-overlay-content">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <h2>Перетащите документ сюда</h2>
+            <p>Отпустите для загрузки</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

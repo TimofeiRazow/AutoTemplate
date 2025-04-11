@@ -1,0 +1,15 @@
+flask
+pytesseract
+numpy
+Pillow
+spacy
+python-docx
+docxtpl
+pymorphy2
+python-dateutil
+faiss-cpu
+sentence-transformers
+transformers[torch]
+opencv-python
+beautifulsoup4
+natasha
